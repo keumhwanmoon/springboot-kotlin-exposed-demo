@@ -1,0 +1,44 @@
+### 사용자 목록 조회
+GET {{host}}:{{port}}/api/users
+Content-Type: application/json
+Accept: application/json
+
+### 사용자 등록
+POST {{host}}:{{port}}/api/users
+Content-Type: application/json
+
+{
+  "loginId": "testuser1",
+  "userName": "홍길동",
+  "picture": "https://example.com/profile.jpg",
+  "email": "test@example.com",
+  "phoneNumber": "010-1234-5678"
+}
+
+> {%
+    if (response.status === 200) {
+        client.global.set("id", response.body.id)
+    }
+%}
+
+### 단일 사용자 조회
+GET http://{{host}}:{{port}}/api/users/{{id}}
+Accept: application/json
+
+### 단일 사용자 수정
+PUT http://{{host}}:{{port}}/api/users/{{id}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "loginId": "updatedId123",
+  "userName": "임꺽정",
+  "email": "updated_email@example.com",
+  "picture": "updated_profile.jpg",
+  "phoneNumber": "02-9876-5432",
+  "mobilePhoneNumber": "010-9876-5432"
+}
+
+### 단일 사용자 삭제
+DELETE http://{{host}}:{{port}}/api/users/{{id}}
+Accept: application/json
