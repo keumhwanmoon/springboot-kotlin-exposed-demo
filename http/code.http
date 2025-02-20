@@ -1,0 +1,105 @@
+### 코드 목록 조회
+GET {{host}}:{{port}}/api/codes
+Content-Type: application/json
+Accept: application/json
+
+> {%
+    client.test("응답이 200이어야 한다", function () {
+        client.assert(response.status === 200, "응답 상태 코드가 200이 아님!");
+    });
+%}
+
+### 코드 등록
+POST {{host}}:{{port}}/api/codes
+Content-Type: application/json
+
+{
+  "codeId": "TEST001",
+  "parCodeId": null,
+  "codeName": "테스트 코드",
+  "codeValue": "T001",
+  "codeExplanation": "테스트를 위한 코드",
+  "useYn": "Y",
+  "sortNumber": 1
+}
+
+> {%
+    client.test("응답이 200이어야 한다", function () {
+        client.assert(response.status === 200, "응답 상태 코드가 200이 아님!");
+    });
+
+    if (response.status === 200) {
+        client.global.set("codeId", response.body.codeId)
+    }
+%}
+
+### 단일 코드 조회
+GET {{host}}:{{port}}/api/codes/{{codeId}}
+Accept: application/json
+
+> {%
+    client.test("응답이 200이어야 한다", function () {
+        client.assert(response.status === 200, "응답 상태 코드가 200이 아님!");
+    });
+%}
+
+### 상위 코드로 하위 코드 목록 조회
+GET {{host}}:{{port}}/api/codes/parent/GENDER
+Accept: application/json
+
+> {%
+    client.test("응답이 200이어야 한다", function () {
+        client.assert(response.status === 200, "응답 상태 코드가 200이 아님!");
+    });
+%}
+
+### 단일 코드 수정
+PUT {{host}}:{{port}}/api/codes/{{codeId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "codeId": "{{codeId}}",
+  "parCodeId": null,
+  "codeName": "수정된 테스트 코드",
+  "codeValue": "T001_UPD",
+  "codeExplanation": "수정된 테스트 코드 설명",
+  "useYn": "Y",
+  "sortNumber": 2
+}
+
+> {%
+    client.test("응답이 200이어야 한다", function () {
+        client.assert(response.status === 200, "응답 상태 코드가 200이 아님!");
+    });
+%}
+
+### 코드 계층 구조 조회
+GET {{host}}:{{port}}/api/codes/hierarchy
+Accept: application/json
+
+> {%
+    client.test("응답이 200이어야 한다", function () {
+        client.assert(response.status === 200, "응답 상태 코드가 200이 아님!");
+    });
+%}
+
+### 활성 코드 목록 조회
+GET {{host}}:{{port}}/api/codes/active
+Accept: application/json
+
+> {%
+    client.test("응답이 200이어야 한다", function () {
+        client.assert(response.status === 200, "응답 상태 코드가 200이 아님!");
+    });
+%}
+
+### 단일 코드 삭제
+DELETE {{host}}:{{port}}/api/codes/{{codeId}}
+Accept: application/json
+
+> {%
+    client.test("응답이 200이어야 한다", function () {
+        client.assert(response.status === 200, "응답 상태 코드가 200이 아님!");
+    });
+%}

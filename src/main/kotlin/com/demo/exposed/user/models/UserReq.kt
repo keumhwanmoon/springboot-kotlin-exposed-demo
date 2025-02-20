@@ -28,10 +28,4 @@ data class UserReq(
 
     @field:Size(max = 255, message = "프로필 이미지 URL은 255자를 초과할 수 없습니다")
     val picture: String? = null,
-
-    @field:Pattern(
-        regexp = "^[YN]$",
-        message = "활성화 여부는 Y 또는 N이어야 합니다"
-    )
-    val enableYn: String = "Y",
 )

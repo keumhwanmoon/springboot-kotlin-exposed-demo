@@ -22,11 +22,11 @@ Content-Type: application/json
 %}
 
 ### 단일 사용자 조회
-GET http://{{host}}:{{port}}/api/users/{{id}}
+GET {{host}}:{{port}}/api/users/{{id}}
 Accept: application/json
 
 ### 단일 사용자 수정
-PUT http://{{host}}:{{port}}/api/users/{{id}}
+PUT {{host}}:{{port}}/api/users/{{id}}
 Content-Type: application/json
 Accept: application/json
 
@@ -40,5 +40,5 @@ Accept: application/json
 }
 
 ### 단일 사용자 삭제
-DELETE http://{{host}}:{{port}}/api/users/{{id}}
+DELETE {{host}}:{{port}}/api/users/{{id}}
 Accept: application/json

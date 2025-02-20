@@ -79,6 +79,8 @@ class UserDao {
 
     @Transactional
     fun delete(id: Long) {
-        Users.deleteWhere { Users.id eq id }
+        transaction {
+            Users.deleteWhere { Users.id eq id }
+        }
     }
 }
