@@ -19,13 +19,21 @@ repositories {
 }
 
 dependencies {
+    // spring boot
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    // database
+    implementation("com.h2database:h2:2.2.220")
+    implementation("com.mysql:mysql-connector-j:8.2.0")
+
+    // jackson
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // kotlin
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // exposed
     implementation("org.jetbrains.exposed:exposed-core:0.41.1")
@@ -33,14 +41,11 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:0.41.1")
     implementation("org.jetbrains.exposed:exposed-java-time:0.41.1")
 
-    // H2 database
-    implementation("com.h2database:h2:2.2.220")
-
-    // mysql
-    implementation("com.mysql:mysql-connector-j:8.2.0")
-
     // jakarta validation
     implementation("jakarta.validation:jakarta.validation-api:3.0.2")
+
+    // testing
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 kotlin {
