@@ -4,6 +4,7 @@ import com.demo.exposed.code.models.CodeReq
 import com.demo.exposed.code.models.CodeRes
 import com.demo.exposed.code.service.CodeService
 import jakarta.validation.Valid
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -27,6 +28,7 @@ class CodeController(
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     fun createCode(@Valid @RequestBody codeReq: CodeReq): CodeRes {
         return codeService.createCode(codeReq)
     }
@@ -40,6 +42,7 @@ class CodeController(
     }
 
     @DeleteMapping("/{codeId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteCode(@PathVariable codeId: String) {
         codeService.deleteCode(codeId)
     }
