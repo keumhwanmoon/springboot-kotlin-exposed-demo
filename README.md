@@ -21,7 +21,7 @@ Kotlin 개발자를 위한 Spring Boot 애플리케이션에서의 Exposed 실�
 
 - Kotlin 1.9.21
 - Spring Boot 3.2.2
-- [Ktorm 3.6.0](https://www.ktorm.org/) (Kotlin ORM)
+- [Exposed](https://www.jetbrains.com/help/exposed/home.html) (Kotlin ORM)
 - Spring Data JDBC 3.2.2
 - Spring MVC 6.1.3
 - Java 17 (OpenJDK 17.0.9)
