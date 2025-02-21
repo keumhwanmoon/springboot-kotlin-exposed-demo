@@ -123,5 +123,29 @@ code?.apply {
 - 새로운 기능 제안은 Pull Request 검토 후 반영
 - 기타 문의사항은 이메일로 연락 가능
 
+## 🔗 관련 프로젝트 추천
+
+### Ktorm을 활용한 유사 프로젝트
+[Springboot Kkotlin Ktorm Demo](https://github.com/keumhwanmoon/springboot-kotlin-ktorm-demo)
+- Spring Boot와 Ktorm을 활용한 데모 프로젝트
+- Exposed 대신 Ktorm을 사용하여 구현된 유사한 기능
+- 주요 차이점:
+  - Ktorm의 SQL DSL 문법 활용
+  - Entity Sequence API 대신 Entity API 사용
+  - 더 직관적인 조인 쿼리 작성 가능
+
+#### 기능 비교
+| 기능      | 현재 프로젝트 (Exposed)      | Ktorm 프로젝트           |
+|---------|------------------------|----------------------|
+| ORM 문법  | SQL DSL + Sequence API | SQL DSL + Entity API |
+| 타입 안전성  | ✅                      | ✅                    |
+| 코틀린 친화성 | ✅                      | ✅                    |
+| 학습 곡선   | 중간                     | 낮음                   |
+| 커뮤니티 규모 | 큼                      | 성장중                  |
+
+이 두 프로젝트를 비교하면서 Kotlin ORM의 다양한 접근 방식을 학습할 수 있습니다.
+각각의 장단점을 파악하여 프로젝트 요구사항에 맞는 최적의 선택을 할 수 있습니다.
+
+
 ## 📝 라이선스
 본 프로젝트는 MIT 라이선스 적용. 상세 내용은 [LICENSE](LICENSE) 파일 참조.
