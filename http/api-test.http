@@ -1,0 +1,10 @@
+## Users HTTP Requests
+import ./user.http
+## Code HTTP Requests
+import ./code.http
+
+### Run all requests from users.http
+run user.http
+
+### Run all requests from code.http
+run code.http
