@@ -1,5 +1,6 @@
 package com.demo.exposed.user.domain.repositories
 
+import com.demo.exposed.common.exception.DuplicateLoginIdException
 import com.demo.exposed.user.domain.entities.Users
 import com.demo.exposed.user.models.UserReq
 import com.demo.exposed.user.models.UserRes
@@ -51,6 +52,12 @@ class UserDao {
     }
 
     fun create(userReq: UserReq): ResultRow = transaction {
+        Users.select { Users.loginId eq userReq.loginId }
+            .firstOrNull()
+            ?.let {
+                throw DuplicateLoginIdException("이미 사용 중인 로그인 아이디입니다: ${userReq.loginId}")
+            }
+
         val insertStatement = Users.insert { row ->
             row[loginId] = userReq.loginId
             row[userName] = userReq.userName
@@ -61,7 +68,6 @@ class UserDao {
 
         Users.select { Users.id eq insertStatement[Users.id] }
             .first()
-
     }
 
     fun update(id: Long, userReq: UserReq): ResultRow? = transaction {

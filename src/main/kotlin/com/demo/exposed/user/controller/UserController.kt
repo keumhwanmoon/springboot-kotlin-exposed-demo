@@ -1,9 +1,12 @@
 package com.demo.exposed.user.controller
 
+import com.demo.exposed.common.exception.DuplicateLoginIdException
+import com.demo.exposed.common.models.ErrorResponse
 import com.demo.exposed.user.models.UserReq
 import com.demo.exposed.user.models.UserRes
 import com.demo.exposed.user.service.UserService
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -23,8 +26,19 @@ class UserController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun registerUser(@RequestBody userReq: UserReq): UserRes {
-        return userService.registerUser(userReq)
+    fun registerUser(@RequestBody userReq: UserReq): ResponseEntity<Any> {
+        return try {
+            ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(userReq))
+        } catch (e: DuplicateLoginIdException) {
+            ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(
+                    ErrorResponse(
+                        code = "DUPLICATE_LOGIN_ID",
+                        message = e.message ?: "Login ID already exists"
+                    )
+                )
+        }
     }
 
     @PutMapping("/{id}")
