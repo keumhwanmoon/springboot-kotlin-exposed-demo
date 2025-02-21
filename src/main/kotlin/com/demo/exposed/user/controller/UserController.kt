@@ -3,6 +3,7 @@ package com.demo.exposed.user.controller
 import com.demo.exposed.user.models.UserReq
 import com.demo.exposed.user.models.UserRes
 import com.demo.exposed.user.service.UserService
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -21,6 +22,7 @@ class UserController(
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     fun registerUser(@RequestBody userReq: UserReq): UserRes {
         return userService.registerUser(userReq)
     }
@@ -31,6 +33,7 @@ class UserController(
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteUser(@PathVariable id: Long) {
         userService.deleteUser(id)
     }
