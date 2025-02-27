@@ -29,7 +29,7 @@ Kotlin 개발자를 위한 Spring Boot 애플리케이션에서의 Exposed 실�
 ## 🌟 주요 기능
 
 ### 📋 사용자 관리 (User Management)
-Ktorm DSL을 활용한 CRUD 작업 구현
+Exposed DSL을 활용한 CRUD 작업 구현
 - 사용자 목록 조회 (`GET /api/users`)
 - 사용자 상세 조회 (`GET /api/users/{id}`)
 - 사용자 생성 (`POST /api/users`)
